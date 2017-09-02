@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Bahdcasts\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Bahdcasts\Http\Controllers\Controller;
+use Bahdcasts\Exceptions\AuthFailedException;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -35,5 +37,31 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        session()->flash('success', 'Successfully logged in.');
+        return response()->json([
+            'status' => 'ok'
+        ]);
+    }
+
+    /**
+     * Get the failed login response instance.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw new AuthFailedException;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace Bahdcasts\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
+        'Bahdcasts\Events\Event' => [
+            'Bahdcasts\Listeners\EventListener',
         ],
     ];
 
