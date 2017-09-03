@@ -2,7 +2,10 @@
 
 namespace Bahdcasts\Http\Controllers\Auth;
 
+use Mail;
 use Bahdcasts\User;
+use Illuminate\Http\Request;
+use Bahdcasts\Mail\ConfirmYourEmail;
 use Bahdcasts\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -50,7 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6',
         ]);
     }
 
@@ -64,8 +67,23 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'username' => str_slug($data['name']),
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'confirm_token' => str_random(25)
         ]);
+    }
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registered(Request $request, $user)
+    {
+        Mail::to($user)->send(new ConfirmYourEmail($user));
+        return redirect($this->redirectPath());
     }
 }
