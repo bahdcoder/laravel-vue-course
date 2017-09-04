@@ -38,11 +38,8 @@
             <hr>
             <p class="lead"></p>
           </header>
-
-
           <div class="row gap-y">
-            
-
+          
           </div>
         </div>
       </section>

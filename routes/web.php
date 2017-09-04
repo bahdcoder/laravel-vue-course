@@ -19,6 +19,10 @@ Route::get('register/confirm', 'ConfirmEmailController@index')->name('confirm-em
 
 Route::get('/logout', function() { auth()->logout(); return redirect('/'); });
 
+Route::middleware('admin')->prefix('admin')->group(function(){
+	Route::resource('series', 'SeriesController');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
