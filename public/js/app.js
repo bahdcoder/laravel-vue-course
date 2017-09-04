@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,8 +70,8 @@
 "use strict";
 
 
-var bind = __webpack_require__(3);
-var isBuffer = __webpack_require__(17);
+var bind = __webpack_require__(4);
+var isBuffer = __webpack_require__(15);
 
 /*global toString:true*/
 
@@ -381,7 +381,7 @@ module.exports = {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(20);
+var normalizeHeaderName = __webpack_require__(18);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -397,10 +397,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(4);
+    adapter = __webpack_require__(5);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(4);
+    adapter = __webpack_require__(5);
   }
   return adapter;
 }
@@ -471,7 +471,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
 
 /***/ }),
 /* 2 */
@@ -504,6 +504,12 @@ module.exports = g;
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(14);
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -519,19 +525,19 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(21);
-var buildURL = __webpack_require__(23);
-var parseHeaders = __webpack_require__(24);
-var isURLSameOrigin = __webpack_require__(25);
-var createError = __webpack_require__(5);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(26);
+var settle = __webpack_require__(19);
+var buildURL = __webpack_require__(21);
+var parseHeaders = __webpack_require__(22);
+var isURLSameOrigin = __webpack_require__(23);
+var createError = __webpack_require__(6);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(24);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -628,7 +634,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(27);
+      var cookies = __webpack_require__(25);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -706,13 +712,13 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(22);
+var enhanceError = __webpack_require__(20);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -731,7 +737,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -743,7 +749,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -769,15 +775,15 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(9);
-module.exports = __webpack_require__(40);
+__webpack_require__(10);
+module.exports = __webpack_require__(38);
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -787,9 +793,9 @@ module.exports = __webpack_require__(40);
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-__webpack_require__(10);
+__webpack_require__(11);
 
-window.Vue = __webpack_require__(35);
+window.Vue = __webpack_require__(33);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -797,25 +803,25 @@ window.Vue = __webpack_require__(35);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('vue-login', __webpack_require__(36));
-
+Vue.component('vue-login', __webpack_require__(34));
+Vue.component('vue-lessons', __webpack_require__(48));
 var app = new Vue({
   el: '#app'
 });
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(11);
+window._ = __webpack_require__(12);
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(15);
+window.axios = __webpack_require__(3);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -849,7 +855,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -17938,10 +17944,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(12)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(13)(module)))
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -17969,23 +17975,15 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 13 */,
-/* 14 */,
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(16);
-
-/***/ }),
-/* 16 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(3);
-var Axios = __webpack_require__(18);
+var bind = __webpack_require__(4);
+var Axios = __webpack_require__(16);
 var defaults = __webpack_require__(1);
 
 /**
@@ -18019,15 +18017,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(7);
-axios.CancelToken = __webpack_require__(33);
-axios.isCancel = __webpack_require__(6);
+axios.Cancel = __webpack_require__(8);
+axios.CancelToken = __webpack_require__(31);
+axios.isCancel = __webpack_require__(7);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(34);
+axios.spread = __webpack_require__(32);
 
 module.exports = axios;
 
@@ -18036,7 +18034,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 17 */
+/* 15 */
 /***/ (function(module, exports) {
 
 /*!
@@ -18063,7 +18061,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 18 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18071,10 +18069,10 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(1);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(28);
-var dispatchRequest = __webpack_require__(29);
-var isAbsoluteURL = __webpack_require__(31);
-var combineURLs = __webpack_require__(32);
+var InterceptorManager = __webpack_require__(26);
+var dispatchRequest = __webpack_require__(27);
+var isAbsoluteURL = __webpack_require__(29);
+var combineURLs = __webpack_require__(30);
 
 /**
  * Create a new instance of Axios
@@ -18156,7 +18154,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 19 */
+/* 17 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -18346,7 +18344,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 20 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18365,13 +18363,13 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 21 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(5);
+var createError = __webpack_require__(6);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -18398,7 +18396,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 22 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18426,7 +18424,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 23 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18501,7 +18499,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 24 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18545,7 +18543,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 25 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18620,7 +18618,7 @@ module.exports = (
 
 
 /***/ }),
-/* 26 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18663,7 +18661,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 27 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18723,7 +18721,7 @@ module.exports = (
 
 
 /***/ }),
-/* 28 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18782,15 +18780,15 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 29 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(30);
-var isCancel = __webpack_require__(6);
+var transformData = __webpack_require__(28);
+var isCancel = __webpack_require__(7);
 var defaults = __webpack_require__(1);
 
 /**
@@ -18868,7 +18866,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 30 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18895,7 +18893,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 31 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18916,7 +18914,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 32 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18937,13 +18935,13 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 33 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(7);
+var Cancel = __webpack_require__(8);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -19001,7 +18999,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 34 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19035,7 +19033,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 35 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29130,15 +29128,15 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
 /***/ }),
-/* 36 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var Component = __webpack_require__(37)(
+var Component = __webpack_require__(35)(
   /* script */
-  __webpack_require__(38),
+  __webpack_require__(36),
   /* template */
-  __webpack_require__(39),
+  __webpack_require__(37),
   /* styles */
   null,
   /* scopeId */
@@ -29170,7 +29168,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 37 */
+/* 35 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -29267,12 +29265,12 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 38 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 //
 //
@@ -29364,7 +29362,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 39 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -29519,10 +29517,514 @@ if (false) {
 }
 
 /***/ }),
-/* 40 */
+/* 38 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(35)(
+  /* script */
+  __webpack_require__(49),
+  /* template */
+  __webpack_require__(50),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "E:\\laragon\\www\\bahdcasts\\resources\\assets\\js\\components\\Lessons.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Lessons.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-88c126ac", Component.options)
+  } else {
+    hotAPI.reload("data-v-88c126ac", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 49 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	props: ['default_lessons', 'series_id'],
+	mounted: function mounted() {
+		var _this = this;
+
+		this.$on('lesson_created', function (lesson) {
+			_this.lessons.push(lesson);
+		});
+	},
+
+	components: {
+		"create-lesson": __webpack_require__(51)
+	},
+	data: function data() {
+		return {
+			lessons: JSON.parse(this.default_lessons)
+		};
+	},
+
+	computed: {},
+	methods: {
+		createNewLesson: function createNewLesson() {
+			this.$emit('create_new_lesson', this.series_id);
+		},
+		deleteLesson: function deleteLesson(id, key) {
+			var _this2 = this;
+
+			if (confirm('Are you sure you wanna delete ?')) {
+				__WEBPACK_IMPORTED_MODULE_0_axios___default.a.delete('/admin/' + this.series_id + '/lessons/' + id).then(function (resp) {
+					_this2.lessons.splice(key, 1);
+				}).catch(function (resp) {
+					console.log(resp);
+				});
+			}
+		},
+		editLesson: function editLesson(lesson) {
+			var seriesId = this.series_id;
+			this.$emit('edit_lesson', { lesson: lesson, seriesId: seriesId });
+		}
+	}
+});
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "container",
+    staticStyle: {
+      "color": "black",
+      "font-weight": "bold"
+    }
+  }, [_c('h1', {
+    staticClass: "text-center"
+  }, [_c('button', {
+    staticClass: "btn btn-primary",
+    on: {
+      "click": function($event) {
+        _vm.createNewLesson()
+      }
+    }
+  }, [_vm._v("\n\t\t\tCreate New Lesson\n\t\t")])]), _vm._v(" "), _c('div', {}, [_c('ul', {
+    staticClass: "list-group d-flex"
+  }, _vm._l((_vm.lessons), function(lesson, key) {
+    return _c('li', {
+      staticClass: "list-group-item d-flex justify-content-between"
+    }, [_c('p', [_vm._v(_vm._s(lesson.title))]), _vm._v(" "), _c('p', [_c('button', {
+      staticClass: "btn btn-primary btn-xs",
+      on: {
+        "click": function($event) {
+          _vm.editLesson(lesson)
+        }
+      }
+    }, [_vm._v("\n\t\t\t\t\t\tEdit\n\t\t\t\t\t")]), _vm._v(" "), _c('button', {
+      staticClass: "btn btn-danger btn-xs",
+      on: {
+        "click": function($event) {
+          _vm.deleteLesson(lesson.id, key)
+        }
+      }
+    }, [_vm._v("\n\t\t\t\t\t\tDelete\n\t\t\t\t\t")])])])
+  }))]), _vm._v(" "), _c('create-lesson')], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-88c126ac", module.exports)
+  }
+}
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(35)(
+  /* script */
+  __webpack_require__(52),
+  /* template */
+  __webpack_require__(53),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "E:\\laragon\\www\\bahdcasts\\resources\\assets\\js\\components\\children\\CreateLesson.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] CreateLesson.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-01bf655a", Component.options)
+  } else {
+    hotAPI.reload("data-v-01bf655a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 52 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	mounted: function mounted() {
+		var _this = this;
+
+		this.$parent.$on('create_new_lesson', function (seriesId) {
+			_this.seriesId = seriesId;
+			console.log('hello parent, we are creating the lesson.');
+			$('#createLesson').modal();
+		});
+
+		this.$parent.$on('edit_lesson', function (_ref) {
+			var lesson = _ref.lesson,
+			    seriesId = _ref.seriesId;
+
+			_this.editing = true;
+			_this.title = lesson.title;
+			_this.description = lesson.description;
+			_this.video_id = lesson.video_id;
+			_this.seriesId = seriesId;
+			_this.lessonId = lesson.id;
+			_this.episode_number = +lesson.episode_number;
+
+			$('#createLesson').modal();
+		});
+	},
+	data: function data() {
+		return {
+			title: '',
+			description: '',
+			episode_number: 0,
+			video_id: '',
+			seriesId: '',
+			editing: false,
+			lessonId: null
+		};
+	},
+
+	methods: {
+		createLesson: function createLesson() {
+			var _this2 = this;
+
+			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/admin/' + this.seriesId + '/lessons', {
+				title: this.title,
+				description: this.description,
+				episode_number: this.episode_number,
+				video_id: this.video_id
+			}).then(function (resp) {
+				_this2.$parent.$emit('lesson_created', resp.data);
+				$('#createLesson').modal('hide');
+			}).catch(function (resp) {
+				console.log(resp);
+			});
+		},
+		updateLesson: function updateLesson() {
+			__WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/admin/' + this.seriesId + '/lessons/' + this.lessonId, {
+				title: this.title,
+				description: this.description,
+				episode_number: this.episode_number,
+				video_id: this.video_id
+			}).then(function (resp) {
+				console.log(resp);
+			}).catch(function (resp) {
+				console.log(resp);
+			});
+		}
+	}
+});
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "modal fade",
+    attrs: {
+      "id": "createLesson",
+      "tabindex": "-1",
+      "role": "dialog",
+      "aria-labelledby": "exampleModalLabel",
+      "aria-hidden": "true"
+    }
+  }, [_c('div', {
+    staticClass: "modal-dialog",
+    attrs: {
+      "role": "document"
+    }
+  }, [_c('div', {
+    staticClass: "modal-content"
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
+    staticClass: "modal-body"
+  }, [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.title),
+      expression: "title"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Lesson title"
+    },
+    domProps: {
+      "value": (_vm.title)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.title = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.video_id),
+      expression: "video_id"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "text",
+      "placeholder": "Vimeo video id"
+    },
+    domProps: {
+      "value": (_vm.video_id)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.video_id = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.episode_number),
+      expression: "episode_number"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "type": "number",
+      "placeholder": "Episode number"
+    },
+    domProps: {
+      "value": (_vm.episode_number)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.episode_number = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('textarea', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.description),
+      expression: "description"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "cols": "30",
+      "rows": "10"
+    },
+    domProps: {
+      "value": (_vm.description)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.description = $event.target.value
+      }
+    }
+  })])]), _vm._v(" "), _c('div', {
+    staticClass: "modal-footer"
+  }, [_c('button', {
+    staticClass: "btn btn-secondary",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "modal"
+    }
+  }, [_vm._v("Close")]), _vm._v(" "), (_vm.editing) ? _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": function($event) {
+        _vm.updateLesson()
+      }
+    }
+  }, [_vm._v("Save lesson")]) : _c('button', {
+    staticClass: "btn btn-primary",
+    attrs: {
+      "type": "button"
+    },
+    on: {
+      "click": function($event) {
+        _vm.createLesson()
+      }
+    }
+  }, [_vm._v("Create lesson")])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "modal-header"
+  }, [_c('h5', {
+    staticClass: "modal-title",
+    attrs: {
+      "id": "exampleModalLabel"
+    }
+  }, [_vm._v("Create new lesson")]), _vm._v(" "), _c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "modal",
+      "aria-label": "Close"
+    }
+  }, [_c('span', {
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×")])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-01bf655a", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

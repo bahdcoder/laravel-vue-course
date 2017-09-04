@@ -94,7 +94,7 @@
         <div class="row gap-y align-items-center">
           <div class="col-12 col-lg-3">
             <p class="text-center text-lg-left">
-              <a href="index.html"><img src="assets/img/logo.png" alt="logo"></a>
+              <a href="index.html"><img src="{{ asset('assets/img/logo.png') }}" alt="logo"></a>
             </p>
           </div>
 

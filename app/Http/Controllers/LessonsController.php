@@ -3,10 +3,12 @@
 namespace Bahdcasts\Http\Controllers;
 
 use Bahdcasts\Series;
+use Bahdcasts\Lesson;
 use Illuminate\Http\Request;
-use Bahdcasts\Http\Requests\CreateSeriesRequest;
+use Bahdcasts\Http\Requests\UpdateLessonRequest;
+use Bahdcasts\Http\Requests\CreateLessonRequest;
 
-class SeriesController extends Controller
+class LessonsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,7 +27,7 @@ class SeriesController extends Controller
      */
     public function create()
     {
-        return view('admin.series.create');
+        //
     }
 
     /**
@@ -34,10 +36,13 @@ class SeriesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateSeriesRequest $request)
+    public function store(Series $series, CreateLessonRequest $request)
     {
-        return $request->uploadSeriesImage()
-                ->storeSeries();
+        return $series
+                ->lessons()
+                ->create(
+                    $request->only(['title', 'description', 'episode_number', 'video_id'])
+                );
     }
 
     /**
@@ -46,10 +51,9 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Series $series)
+    public function show($id)
     {
-        return view('admin.series.index')
-                ->withSeries($series);
+        //
     }
 
     /**
@@ -70,9 +74,11 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Series $series, Lesson $lesson, UpdateLessonRequest $request)
     {
-        //
+        $lesson->update($request->only(['title', 'description', 'episode_number', 'video_id']));
+
+        return $lesson->fresh();
     }
 
     /**
@@ -81,8 +87,10 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Series $series, Lesson $lesson)
     {
-        //
+        $lesson->delete();
+
+        return response()->json(['status' => 'ok'], 200);
     }
 }
