@@ -38,11 +38,7 @@ class LessonsController extends Controller
      */
     public function store(Series $series, CreateLessonRequest $request)
     {
-        return $series
-                ->lessons()
-                ->create(
-                    $request->only(['title', 'description', 'episode_number', 'video_id'])
-                );
+        return $series->lessons()->create($request->all());
     }
 
     /**
@@ -76,7 +72,7 @@ class LessonsController extends Controller
      */
     public function update(Series $series, Lesson $lesson, UpdateLessonRequest $request)
     {
-        $lesson->update($request->only(['title', 'description', 'episode_number', 'video_id']));
+        $lesson->update($request->all());
 
         return $lesson->fresh();
     }
