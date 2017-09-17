@@ -26,11 +26,24 @@
 
 <script>
 	import Axios from 'axios'
+	
 	export default {
 		props: ['default_lessons', 'series_id'],
 		mounted() {
 			this.$on('lesson_created', (lesson) => {
+				window.noty({
+					message: 'Lesson created successfully',
+					type: 'danger'
+				})
 				this.lessons.push(lesson)
+			})
+
+			this.$on('lesson_updated', (lesson) => {
+				let lessonIndex = this.lessons.findIndex(l => {
+					return lesson.id == l.id 
+				})
+
+				this.lessons.splice(lessonIndex, 1, lesson)
 			})
 		},
 		components: {

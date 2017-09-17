@@ -24,6 +24,7 @@
 
 
     <!-- Topbar -->
+
     <nav class="topbar topbar-inverse topbar-expand-md topbar-sticky">
       <div class="container">
         
@@ -62,9 +63,6 @@
     <!-- Header -->
     @yield('header')
     <!-- END Header -->
-
-
-
     <!-- Main container -->
     <main class="main-content">
 
@@ -84,7 +82,7 @@
 
 
 
-
+    <vue-noty></vue-noty>
     @guest
         <vue-login></vue-login>
     @endguest
