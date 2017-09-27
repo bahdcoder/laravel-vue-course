@@ -5,6 +5,7 @@ namespace Bahdcasts\Http\Controllers;
 use Bahdcasts\Series;
 use Illuminate\Http\Request;
 use Bahdcasts\Http\Requests\CreateSeriesRequest;
+use Bahdcasts\Http\Requests\UpdateSeriesRequest;
 
 class SeriesController extends Controller
 {
@@ -15,7 +16,7 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.series.all')->withSeries(Series::all());
     }
 
     /**
@@ -58,9 +59,9 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Series $series)
     {
-        //
+        return view('admin.series.edit')->withSeries($series);
     }
 
     /**
@@ -70,9 +71,12 @@ class SeriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSeriesRequest $request, Series $series)
     {
-        //
+        $request->updateSeries($series);
+
+        session()->flash('success', 'Successfully updated series');
+        return redirect()->route('series.index');
     }
 
     /**
