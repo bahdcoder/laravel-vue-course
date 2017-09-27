@@ -51,7 +51,6 @@
 				this.seriesId = seriesId
 				this.editing = false
 				this.lesson = new Lesson({}) 
-				console.log('hello parent, we are creating the lesson.')
 				$('#createLesson').modal()
 			})
 
@@ -77,8 +76,8 @@
 				Axios.post(`/admin/${this.seriesId}/lessons`, this.lesson).then(resp => {
 					this.$parent.$emit('lesson_created', resp.data)
 					$('#createLesson').modal('hide')
-				}).catch(resp => {
-					console.log(resp)
+				}).catch(error => {
+					window.handleErrors(error)
 				})
 			}, 
 			updateLesson() {
@@ -86,8 +85,8 @@
 				 .then(resp => {
 				 	$("#createLesson").modal('hide')
 				 	this.$parent.$emit('lesson_updated', resp.data)
-				 }).catch(resp => {
-				 	console.log(resp)
+				 }).catch(error => {
+				 	window.handleErrors(error)
 				 })
 			}
 		}

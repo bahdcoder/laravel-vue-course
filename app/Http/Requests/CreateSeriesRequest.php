@@ -31,6 +31,11 @@ class CreateSeriesRequest extends FormRequest
         ];
     }
     
+    /**
+     * Upload the series image passed in the request
+     * 
+     * @return App\Http\Requests\CreateSeriesRequest
+     */
     public function uploadSeriesImage() 
     {
         $uploadedImage = $this->image;
@@ -44,6 +49,11 @@ class CreateSeriesRequest extends FormRequest
         return $this;
     }
 
+    /**
+     * Store series in request to the database
+     * 
+     * @return redirect()
+     */
     public function storeSeries() 
     {
         $series = Series::create([

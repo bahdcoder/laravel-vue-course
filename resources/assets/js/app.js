@@ -1,10 +1,4 @@
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -13,6 +7,20 @@ window.events = new Vue()
 
 window.noty = function(notification) {
 	window.events.$emit('notification', notification)
+}
+
+window.handleErrors = function(error) {
+	if(error.response.status == 422) {
+ 		window.noty({
+			message: 'You had validation errors. Please try again.',
+			type: 'danger'
+		})
+ 	}
+
+ 	window.noty({
+		message: 'Something went wrong . Please refresh the page.',
+		type: 'danger'
+	})
 }
 
 

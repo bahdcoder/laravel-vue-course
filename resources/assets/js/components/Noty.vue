@@ -15,7 +15,6 @@
 				}, 2500)
 			})
 		},
-		props: ['default_noty'],
 		data() {
 			return {
 				notification: this.default_noty || null 

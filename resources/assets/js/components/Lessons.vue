@@ -33,7 +33,7 @@
 			this.$on('lesson_created', (lesson) => {
 				window.noty({
 					message: 'Lesson created successfully',
-					type: 'danger'
+					type: 'success'
 				})
 				this.lessons.push(lesson)
 			})
@@ -42,8 +42,12 @@
 				let lessonIndex = this.lessons.findIndex(l => {
 					return lesson.id == l.id 
 				})
-
+				
 				this.lessons.splice(lessonIndex, 1, lesson)
+				window.noty({
+					message: 'Lesson updated successfully',
+					type: 'success'
+				})
 			})
 		},
 		components: {
@@ -66,8 +70,12 @@
 					Axios.delete(`/admin/${this.series_id}/lessons/${id}`)
 						 .then(resp => {
 						 	this.lessons.splice(key, 1)
-						 }).catch(resp => {
-						 	console.log(resp)
+						 	window.noty({
+								message: 'Lesson updated successfully',
+								type: 'success'
+							})
+						 }).catch(error => {
+						 	window.handleErrors(error)
 						 })
 				}
 			},
