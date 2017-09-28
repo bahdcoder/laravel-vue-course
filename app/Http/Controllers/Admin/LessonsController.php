@@ -1,10 +1,11 @@
 <?php
 
-namespace Bahdcasts\Http\Controllers;
+namespace Bahdcasts\Http\Controllers\Admin;
 
 use Bahdcasts\Series;
 use Bahdcasts\Lesson;
 use Illuminate\Http\Request;
+use Bahdcasts\Http\Controllers\Controller;
 use Bahdcasts\Http\Requests\UpdateLessonRequest;
 use Bahdcasts\Http\Requests\CreateLessonRequest;
 

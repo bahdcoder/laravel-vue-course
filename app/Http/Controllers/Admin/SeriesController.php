@@ -1,9 +1,10 @@
 <?php
 
-namespace Bahdcasts\Http\Controllers;
+namespace Bahdcasts\Http\Controllers\Admin;
 
 use Bahdcasts\Series;
 use Illuminate\Http\Request;
+use Bahdcasts\Http\Controllers\Controller;
 use Bahdcasts\Http\Requests\CreateSeriesRequest;
 use Bahdcasts\Http\Requests\UpdateSeriesRequest;
 

@@ -27,7 +27,7 @@ class UpdateSeriesTest extends TestCase
         ->assertSessionHas('success', 'Successfully updated series');
         //assert storage image 
         Storage::disk(config('filesystems.default'))->assertExists(
-    		'series/' . str_slug('new series title') . '.png'
+    		'public/series/' . str_slug('new series title') . '.png'
     	);
         //assert that db has a particular
         $this->assertDatabaseHas('series', [
