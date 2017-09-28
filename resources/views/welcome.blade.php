@@ -43,7 +43,7 @@
             <div class="card mb-30">
               <div class="row">
                 <div class="col-12 col-md-4 align-self-center">
-                  <a href="blog-single.html"><img src="{{ asset('storage/series/' . $s->image_url) }}" alt="..."></a>
+                  <a href="blog-single.html"><img src="{{ $s->image_path }}" alt="..."></a>
                 </div>
 
                 <div class="col-12 col-md-8">
