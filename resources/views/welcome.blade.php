@@ -43,7 +43,7 @@
             <div class="card mb-30">
               <div class="row">
                 <div class="col-12 col-md-4 align-self-center">
-                  <a href="blog-single.html"><img src="{{ $s->image_path }}" alt="..."></a>
+                  <a href=""><img src="{{ $s->image_path }}" alt="..."></a>
                 </div>
 
                 <div class="col-12 col-md-8">
@@ -51,7 +51,7 @@
                     <h4 class="card-title">{{ $s->title }}</h4>
                    
                     <p class="card-text">{{ $s->description }}</p>
-                    <a class="fw-600 fs-12" href="blog-single.html">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
+                    <a class="fw-600 fs-12" href="">Read more <i class="fa fa-chevron-right fs-9 pl-8"></i></a>
                   </div>
                 </div>
               </div>

@@ -27,6 +27,12 @@ class UpdateSeriesRequest extends SeriesRequest
         ];
     }
 
+    /**
+     * Update a series into database
+     *
+     * @param [Bahdcasts\Series] $series
+     * @return void
+     */
     public function updateSeries($series) {
         if($this->hasFile('image')) {
             $series->image_url = 'series/' . $this->uploadSeriesImage()->fileName;

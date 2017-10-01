@@ -6,8 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Series extends Model
 {
+    /**
+     * All database columns to be guarded from mass assignment
+     *
+     * @var array
+     */
     protected $guarded = [];
 
+    /**
+     * Eager load relationships
+     *
+     * @var array
+     */
     protected $with = ['lessons'];
 
 
@@ -26,6 +36,11 @@ class Series extends Model
         return 'slug';
     }
 
+    /**
+     * Return the public path for series image
+     *
+     * @return string
+     */
     public function getImagePathAttribute() {
         return asset('storage/' . $this->image_url);
     }

@@ -10,6 +10,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UpdateSeriesTest extends TestCase
 {
+    use RefreshDatabase;
+    
     public function test_a_user_can_update_a_series() {
         // login as admin 
         $this->withoutExceptionHandling();
