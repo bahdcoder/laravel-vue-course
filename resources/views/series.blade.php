@@ -13,7 +13,7 @@
                     <br><br><br>
                     @auth
                       @hasStartedSeries($series)
-                      <a class="btn btn-lg btn-primary mr-16 btn-round">CONTINUE LEARNING</a>                        
+                      <a href="{{ route('series.learning', $series->slug) }}" class="btn btn-lg btn-primary mr-16 btn-round">CONTINUE LEARNING</a>                        
                       @else
                       <a class="btn btn-lg btn-primary mr-16 btn-round">START LEARNING</a>                      
                       @endhasStartedSeries
