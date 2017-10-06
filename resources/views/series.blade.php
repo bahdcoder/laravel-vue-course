@@ -11,15 +11,15 @@
                     <h1 class="hidden-md-up">{{ $series->title }}</h1>
                     <br>
                     <br><br><br>
-                    @if(auth()->user())
-                      @if(auth()->user()->hasStartedSeries($series))
+                    @auth
+                      @hasStartedSeries($series)
                       <a class="btn btn-lg btn-primary mr-16 btn-round">CONTINUE LEARNING</a>                        
                       @else
                       <a class="btn btn-lg btn-primary mr-16 btn-round">START LEARNING</a>                      
-                      @endif
+                      @endhasStartedSeries
                     @else 
                     <a class="btn btn-lg btn-primary mr-16 btn-round">START LEARNING</a>                    
-                    @endif 
+                    @endauth
                   </div>
 
                   <div class="col-12 align-self-end text-center">
