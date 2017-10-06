@@ -37,4 +37,14 @@ trait Learning {
     public function getNumberOfCompletedLessonsForASeries($series) {
         return count(Redis::smembers("user:{$this->id}:series:{$series->id}"));
     }
+
+    /**
+     * Check if a user has started a series
+     *
+     * @param [Bahdcasts\Series] $series
+     * @return boolean
+     */
+    public function hasStartedSeries($series) {
+        return $this->getNumberOfCompletedLessonsForASeries($series) > 0;
+    }
 }

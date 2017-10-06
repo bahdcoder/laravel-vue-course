@@ -50,4 +50,20 @@ class UserTest extends TestCase
             50
         );
     }
+
+    public function test_can_know_if_a_user_has_started_a_series() {
+        //user, 2 series,
+        $this->flushRedis();
+        $user = factory(User::class)->create();
+        $lesson = factory(Lesson::class)->create();
+        $lesson2 = factory(Lesson::class)->create([
+            'series_id' => 1
+        ]);
+        $lesson3 = factory(Lesson::class)->create();
+        //user watches a lesson in the 1st series
+        $user->completeLesson($lesson2);
+        // assert that returns true hasStartedseries(1)
+        $this->assertTrue($user->hasStartedSeries($lesson->series));
+        $this->assertFalse($user->hasStartedSeries($lesson3->series));
+    }
 }
