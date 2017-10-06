@@ -3,12 +3,13 @@
 namespace Bahdcasts;
 
 use Redis;
+use Bahdcasts\Entities\Learning;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Learning;
 
     /**
      * The attributes that are mass assignable.
@@ -57,38 +58,5 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return in_array($this->email, config('bahdcasts.administrators'));
-    }
-
-    /**
-     * Mark a lesson as completed for a user
-     *
-     * @param [Bahdcasts\Lesson] $lesson
-     * @return void
-     */
-    public function completeLesson($lesson) {
-        Redis::sadd("user:{$this->id}:series:{$lesson->series->id}", $lesson->id);
-    }
-
-    /**
-     * Get percentage completed for a series for a user
-     *
-     * @param [Bahdcasts\Series] $series
-     * @return void
-     */
-    public function percentageCompletedForSeries($series) {
-        $numberOfLessonsInSeries = $series->lessons->count();
-        $numberOfCompletedLessons = $this->getNumberOfCompletedLessonsForASeries($series);
-
-        return ($numberOfCompletedLessons / $numberOfLessonsInSeries) * 100;
-    }
-
-    /**
-     * Get number of completed lessons for a series
-     *
-     * @param [Bahdcasts\Series] $series
-     * @return void
-     */
-    public function getNumberOfCompletedLessonsForASeries($series) {
-        return count(Redis::smembers("user:{$this->id}:series:{$series->id}"));
     }
 }
