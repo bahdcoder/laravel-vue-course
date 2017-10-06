@@ -1,19 +1,25 @@
 @extends('layouts.app')
 
 @section('header')
-        <header class="header header-inverse h-fullscreen pb-80" style="background-image: url('assets/img/bg-cup.jpg');" data-overlay="8">
+        <header class="header header-inverse h-fullscreen pb-80" style="background-image: url({{ $series->image_path }});" data-overlay="8">
             <div class="container text-center">
 
                 <div class="row h-full">
                   <div class="col-12 col-lg-10 offset-lg-1 align-self-center">
 
-                    <h1 class="display-4 hidden-sm-down">Awecome course title </h1>
-                    <h1 class="hidden-md-up">Awecome course title</h1>
+                    <h1 class="display-4 hidden-sm-down">{{ $series->title }}</h1>
+                    <h1 class="hidden-md-up">{{ $series->title }}</h1>
                     <br>
-                    <p class="lead text-white fs-20 hidden-sm-down">Little course description</p>
-
                     <br><br><br>
-                    <a class="btn btn-lg btn-primary mr-16 btn-round">START LEARNING</a>
+                    @if(auth()->user())
+                      @if(auth()->user()->hasStartedSeries($series))
+                      <a class="btn btn-lg btn-primary mr-16 btn-round">CONTINUE LEARNING</a>                        
+                      @else
+                      <a class="btn btn-lg btn-primary mr-16 btn-round">START LEARNING</a>                      
+                      @endif
+                    @else 
+                    <a class="btn btn-lg btn-primary mr-16 btn-round">START LEARNING</a>                    
+                    @endif 
                   </div>
 
                   <div class="col-12 align-self-end text-center">
@@ -41,7 +47,7 @@
           
           <div class="col-12 offset-md-2 col-md-8 mb-30">
             <p class="text-center">
-              Course description
+              {{ $series->description }}
             </p>
           </div>
         </div>

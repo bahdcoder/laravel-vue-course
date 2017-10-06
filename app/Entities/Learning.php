@@ -3,6 +3,7 @@
 namespace Bahdcasts\Entities;
 
 use Redis;
+use Bahdcasts\Lesson;
 
 trait Learning {
     /**
@@ -35,7 +36,11 @@ trait Learning {
      * @return void
      */
     public function getNumberOfCompletedLessonsForASeries($series) {
-        return count(Redis::smembers("user:{$this->id}:series:{$series->id}"));
+        return count($this->getCompletedLessonsForASeries($series));
+    }
+
+    public function getCompletedLessonsForASeries($series) {
+        return Redis::smembers("user:{$this->id}:series:{$series->id}");
     }
 
     /**
@@ -46,5 +51,19 @@ trait Learning {
      */
     public function hasStartedSeries($series) {
         return $this->getNumberOfCompletedLessonsForASeries($series) > 0;
+    }
+
+    /**
+     * Get all completed lessons for a series
+     *
+     * @param [Bahdcasts\Series] $series
+     * @return \Illuminate\Support\Collection(Bahdcasts\Lesson)
+     */
+    public function getCompletedLessons($series) {
+        $completedLessons = $this->getCompletedLessonsForASeries($series);
+        // 1, 2, 4
+        return collect($completedLessons)->map(function($lessonId) {
+            return Lesson::find($lessonId);
+        });
     }
 }
