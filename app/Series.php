@@ -20,7 +20,11 @@ class Series extends Model
      */
     protected $with = ['lessons'];
 
-
+    /**
+     * A series has many lessons
+     *
+     * @return void
+     */
     public function lessons()
     {
     	return $this->hasMany(Lesson::class);
