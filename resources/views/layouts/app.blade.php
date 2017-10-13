@@ -8,7 +8,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>TheSaaS - Header image</title>
-
     <!-- Styles -->
     <link href="{{ asset('assets/css/core.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/thesaas.min.css') }}" rel="stylesheet">

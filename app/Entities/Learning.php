@@ -39,6 +39,12 @@ trait Learning {
         return count($this->getCompletedLessonsForASeries($series));
     }
 
+    /**
+     * Get array of completed lessons ids for a series
+     *
+     * @param [Bahdcasts\Series] $series
+     * @return array
+     */
     public function getCompletedLessonsForASeries($series) {
         return Redis::smembers("user:{$this->id}:series:{$series->id}");
     }
@@ -65,5 +71,18 @@ trait Learning {
         return collect($completedLessons)->map(function($lessonId) {
             return Lesson::find($lessonId);
         });
+    }
+
+    /**
+     * Check if user has completed a lesson
+     *
+     * @param [Bahdcasts\Lesson] $lesson
+     * @return boolean
+     */
+    public function hasCompletedLesson($lesson) {
+        return in_array(
+            $lesson->id,
+            $this->getCompletedLessonsForASeries($lesson->series)
+        );
     }
 }

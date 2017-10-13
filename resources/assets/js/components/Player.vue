@@ -5,6 +5,7 @@
 </template>
 
 <script>
+    import Axios from 'axios'
     import Swal from 'sweetalert'
     import Player from '@vimeo/player'
     export default {
@@ -25,13 +26,19 @@
                     Swal('Yaaay ! You completed this series !')
                 }
                 
+            },
+            completeLesson() {
+                Axios.post(`/series/complete-lesson/${this.lesson.id}`, {})
+                     .then(resp => {
+                         this.displayVideoEndedAlert()
+                     })
             }
         },
         mounted() {
             const player = new Player('handstick')
 
             player.on('ended', () => {
-                this.displayVideoEndedAlert() 
+                this.completeLesson()
             })
         }
     }
