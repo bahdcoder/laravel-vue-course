@@ -14,10 +14,8 @@ class WatchSeriesTest extends TestCase
     public function test_a_user_can_complete_a_series() {
         $this->flushRedis();
         $this->withoutExceptionHandling();
-        /// user 
         $user = factory(User::class)->create();
         $this->actingAs($user);
-        // series => 2 
         $lesson = factory(Lesson::class)->create();
         $lesson2 = factory(Lesson::class)->create([ 'series_id' => 1 ]);
          // post -> complete-slessons
@@ -34,7 +32,5 @@ class WatchSeriesTest extends TestCase
         $this->assertFalse(
             $user->hasCompletedLesson($lesson2)
         );
-        // resp 
-        // resp 
     }
 }

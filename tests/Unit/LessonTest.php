@@ -20,7 +20,7 @@ class LessonTest extends TestCase
         $this->assertEquals($lesson->getNextLesson()->id, $lesson3->id);
         $this->assertEquals($lesson3->getPrevLesson()->id, $lesson->id);
         $this->assertEquals($lesson2->getNextLesson()->id, $lesson->id);
-        $this->assertNull($lesson2->getPrevLesson());
-        $this->assertNull($lesson3->getNextLesson());
+        $this->assertEquals($lesson2->getPrevLesson()->id, $lesson2->id);
+        $this->assertEquals($lesson3->getNextLesson()->id, $lesson3->id);
     }
 }

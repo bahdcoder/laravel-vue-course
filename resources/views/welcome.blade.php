@@ -14,8 +14,7 @@
 
         <br><br><br>
 
-        <a class="btn btn-lg btn-round w-200 btn-primary mr-16" href="#" data-scrollto="section-intro">Demos</a>
-        <a class="btn btn-lg btn-round w-200 btn-outline btn-white hidden-sm-down" href="#" data-scrollto="section-intro">Features</a>
+        <a class="btn btn-lg btn-round w-200 btn-primary mr-16" href="/series">View more</a>
 
         </div>
 
