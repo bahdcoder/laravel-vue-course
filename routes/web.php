@@ -1,5 +1,19 @@
 <?php
 
+Route::get('/subscribe', function() {
+    return view('subscribe');
+});
+
+Route::post('/subscribe', function() {
+    return auth()->user()
+            ->newSubscription(
+                request('plan'), request('plan')
+            )->create(
+                request('stripeToken')
+            );
+    
+});
+
 Auth::routes();
 Route::get('/', 'FrontendController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');

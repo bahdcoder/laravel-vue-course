@@ -1100,6 +1100,7 @@ window.handleErrors = function (error) {
 
 Vue.component('vue-noty', __webpack_require__(35));
 Vue.component('vue-login', __webpack_require__(38));
+Vue.component('vue-stripe', __webpack_require__(64));
 Vue.component('vue-player', __webpack_require__(41));
 Vue.component('vue-lessons', __webpack_require__(48));
 var app = new Vue({
@@ -32581,6 +32582,146 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(65),
+  /* template */
+  __webpack_require__(66),
+  /* styles */
+  null,
+  /* scopeId */
+  null,
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "E:\\laragon\\www\\bahdcasts\\resources\\assets\\js\\components\\Stripe.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Stripe.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-16e76fa4", Component.options)
+  } else {
+    hotAPI.reload("data-v-16e76fa4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 65 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['email'],
+    mounted: function mounted() {
+        this.handler = StripeCheckout.configure({
+            key: 'pk_test_2VnQL9Cic4hLPeiYtvHellBI',
+            image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
+            locale: 'auto',
+            token: function token(_token) {
+                __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/subscribe', {
+                    stripeToken: _token.id,
+                    plan: window.stripePlan
+                }).then(function (resp) {
+                    console.log(resp);
+                });
+            }
+        });
+    },
+    data: function data() {
+        return {
+            plan: '',
+            amount: 0,
+            handler: null
+        };
+    },
+
+    methods: {
+        subscribe: function subscribe(plan) {
+            if (plan == 'monthly') {
+                window.stripePlan = 'monthly';
+                this.amount = 999;
+            } else {
+                window.stripePlan = 'yearly';
+                this.amount = 9999;
+            }
+
+            this.handler.open({
+                name: 'Bahdcasts',
+                description: 'Bahdcasts Subscription',
+                amount: this.amount,
+                email: this.email
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('button', {
+    staticClass: "btn btn-success",
+    on: {
+      "click": function($event) {
+        _vm.subscribe('monthly')
+      }
+    }
+  }, [_vm._v("Subscribe to $9.99 Monthly")]), _vm._v(" "), _c('button', {
+    staticClass: "btn btn-info",
+    on: {
+      "click": function($event) {
+        _vm.subscribe('yearly')
+      }
+    }
+  }, [_vm._v(" Subscribe to $99.9 Yearly")])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-16e76fa4", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
