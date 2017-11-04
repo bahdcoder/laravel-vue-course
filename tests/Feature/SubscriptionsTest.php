@@ -14,9 +14,12 @@ class SubscriptionsTest extends TestCase
     public function test_a_user_without_a_plan_cannot_watch_premium_lessons() {
         $user = factory(User::class)->create();
         $lesson = factory(Lesson::class)->create([  'premium' => 1 ]);
+        $lesson2 = factory(Lesson::class)->create([  'premium' => 0 ]);
         $this->actingAs($user);
         $this->get("/series/{$lesson->series->slug}/lesson/{$lesson->id}")
             ->assertRedirect('/subscribe');
+        $this->get("/series/{$lesson2->series->slug}/lesson/{$lesson2->id}")
+            ->assertViewIs('watch');
     }
 
     public function fakeSubscribe($user) {

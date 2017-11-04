@@ -38,7 +38,7 @@ class WatchSeriesController extends Controller
      * @return view
      */
     public function showLesson(Series $series, Lesson $lesson) {
-        if (!auth()->user()->subscribedToPlan(['monthly', 'yearly'])) {
+        if ($lesson->premium && !auth()->user()->subscribed('monthly') && !auth()->user()->subscribed('yearly')) {
             return redirect('subscribe');
         } 
 
