@@ -22,6 +22,21 @@ class SubscriptionsTest extends TestCase
             ->assertViewIs('watch');
     }
 
+    public function test_a_user_on_any_plan_can_watch_all_lessons() {
+        $user = factory(User::class)->create();
+        $lesson = factory(Lesson::class)->create([  'premium' => 1 ]);
+        $lesson2 = factory(Lesson::class)->create([  'premium' => 0 ]);
+
+        $this->actingAs($user);
+
+        $this->fakeSubscribe($user);
+
+        $this->get("/series/{$lesson->series->slug}/lesson/{$lesson->id}")
+        ->assertViewIs('watch');
+        $this->get("/series/{$lesson2->series->slug}/lesson/{$lesson2->id}")
+        ->assertViewIs('watch');
+    }
+
     public function fakeSubscribe($user) {
         // subscriptions 
         $user->subscriptions()->create([
