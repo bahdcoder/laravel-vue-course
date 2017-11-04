@@ -32417,6 +32417,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 //
 //
 //
+//
+//
+//
 
 
 
@@ -32427,6 +32430,7 @@ var Lesson = function Lesson(lesson) {
 	this.description = lesson.description || '';
 	this.video_id = lesson.video_id || '';
 	this.episode_number = lesson.episode_number || '';
+	this.premium = lesson.premium || false;
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -32457,7 +32461,8 @@ var Lesson = function Lesson(lesson) {
 			lesson: {},
 			seriesId: '',
 			editing: false,
-			lessonId: null
+			lessonId: null,
+			premium: false
 		};
 	},
 
@@ -32600,7 +32605,40 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.lesson.description = $event.target.value
       }
     }
-  })])]), _vm._v(" "), _c('div', {
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.lesson.premium),
+      expression: "lesson.premium"
+    }],
+    attrs: {
+      "type": "checkbox"
+    },
+    domProps: {
+      "checked": Array.isArray(_vm.lesson.premium) ? _vm._i(_vm.lesson.premium, null) > -1 : (_vm.lesson.premium)
+    },
+    on: {
+      "__c": function($event) {
+        var $$a = _vm.lesson.premium,
+          $$el = $event.target,
+          $$c = $$el.checked ? (true) : (false);
+        if (Array.isArray($$a)) {
+          var $$v = null,
+            $$i = _vm._i($$a, $$v);
+          if ($$el.checked) {
+            $$i < 0 && (_vm.lesson.premium = $$a.concat($$v))
+          } else {
+            $$i > -1 && (_vm.lesson.premium = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+          }
+        } else {
+          _vm.lesson.premium = $$c
+        }
+      }
+    }
+  }), _vm._v(" Premium: " + _vm._s(_vm.lesson.premium) + "\n            ")])]), _vm._v(" "), _c('div', {
     staticClass: "modal-footer"
   }, [_c('button', {
     staticClass: "btn btn-secondary",
