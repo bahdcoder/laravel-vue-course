@@ -1,19 +1,5 @@
 <?php
 
-Route::get('/subscribe', function() {
-    return view('subscribe');
-});
-
-Route::post('/subscribe', function() {
-    return auth()->user()
-            ->newSubscription(
-                request('plan'), request('plan')
-            )->create(
-                request('stripeToken')
-            );
-    
-});
-
 Auth::routes();
 Route::get('/', 'FrontendController@welcome');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -25,6 +11,8 @@ Route::get('register/confirm', 'ConfirmEmailController@index')->name('confirm-em
 
 
 Route::middleware('auth')->group(function() {
+    Route::post('/subscribe', 'SubscriptionsController@subscribe');    
+    Route::get('/subscribe', 'SubscriptionsController@showSubscriptionForm');
     Route::post('/series/complete-lesson/{lesson}', 'WatchSeriesController@completeLesson');
     Route::get('/watch-series/{series}', 'WatchSeriesController@index')->name('series.learning');
     Route::get('/series/{series}/lesson/{lesson}', 'WatchSeriesController@showLesson')->name('series.watch');
