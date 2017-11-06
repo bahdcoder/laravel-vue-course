@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert';
 import Axios from 'axios'
 export default {
     props: ['email'],
@@ -15,11 +16,15 @@ export default {
             image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
             locale: 'auto',
             token(token) {
+                Swal({ text: 'Please wait while we subscribe you to a plan ...', buttons: false });
                 Axios.post('/subscribe', {
                     stripeToken: token.id,
                     plan: window.stripePlan
                 }).then(resp => {
-                    console.log(resp)
+                    Swal({ text: 'Successfully subscribed', icon: 'success' })
+                        .then(() => {
+                            window.location = '';
+                        });
                 })
             }
         }) 
