@@ -11,6 +11,13 @@ Route::get('register/confirm', 'ConfirmEmailController@index')->name('confirm-em
 
 
 Route::middleware('auth')->group(function() {
+    Route::post('/card/update', function() {
+        $token = request('stripeToken');
+        $user = auth()->user();
+
+        $user->updateCard($token);
+        return response()->json('ok');
+    });
     Route::post('/subscribe', 'SubscriptionsController@subscribe');    
     Route::post('/subscription/change', 'SubscriptionsController@change')->name('subscriptions.change');        
     Route::get('/subscribe', 'SubscriptionsController@showSubscriptionForm');

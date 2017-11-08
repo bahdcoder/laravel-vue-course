@@ -79,7 +79,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#settings-2">
-                <h6>Settings</h6>
+                <h6>Card details</h6>
                 </a>
             </li>
             </ul>
@@ -125,7 +125,14 @@
             </div>
 
             <div class="tab-pane fade" id="settings-2">
-                <p class="text-center"><img src="assets/img/blog-4.jpg" alt="..."></p>
+                <div class="row">
+                    <h2 class="text-center">
+                        Your current card: <span class="badge badge-sm badge-primary">{{ auth()->user()->card_brand }}:{{ auth()->user()->card_last_four }}</span>
+                    </h2>
+                    <p class="ml-5 mt-5 text-center">
+                        <vue-update-card email="{{ auth()->user()->email }}"></vue-update-card>
+                    </p>
+                </div>
             </div>
 
             </div>
@@ -138,4 +145,8 @@
     </div>
 </section>    
 
+@endsection
+
+@section('scripts')
+    <script src="https://checkout.stripe.com/checkout.js"></script>
 @endsection

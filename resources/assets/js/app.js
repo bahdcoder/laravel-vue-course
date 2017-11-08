@@ -29,6 +29,7 @@ Vue.component('vue-login', require('./components/Login.vue'))
 Vue.component('vue-stripe', require('./components/Stripe.vue'))
 Vue.component('vue-player', require('./components/Player.vue'))
 Vue.component('vue-lessons', require('./components/Lessons.vue'))
+Vue.component('vue-update-card', require('./components/UpdateCard.vue'));
 const app = new Vue({
     el: '#app'
 });
