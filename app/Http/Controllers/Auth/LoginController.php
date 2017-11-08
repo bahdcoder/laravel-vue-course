@@ -49,9 +49,13 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
         session()->flash('success', 'Successfully logged in.');
-        return response()->json([
-            'status' => 'ok'
-        ]);
+        if (request()->ajax()) {
+            return response()->json([
+                'status' => 'ok'
+            ]);
+        } 
+
+        return redirect('/');
     }
 
     /**
