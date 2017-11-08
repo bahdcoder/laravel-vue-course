@@ -55,7 +55,7 @@
     </div>
 </section>    
 
-@if(auth()->user->id === $user->id)
+@if(auth()->id() === $user->id)
 @php 
 $subscription = auth()->user()->subscriptions->first();
 @endphp 
@@ -95,6 +95,7 @@ $subscription = auth()->user()->subscriptions->first();
 
         <div class="col-12 col-md-8 align-self-center">
             <div class="tab-content">
+            
             <div class="tab-pane fade show active" id="home-2">
                 <form action="{{ route('series.store')  }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
@@ -125,6 +126,7 @@ $subscription = auth()->user()->subscriptions->first();
                         @endif 
                     </h5>
                     <br>
+                    @if($subscription)
                     <select name="plan" class="form-control">
                         <option value="monthly">Monthly</option>
                         <option value="yearly">Yearly</option>
@@ -133,6 +135,8 @@ $subscription = auth()->user()->subscriptions->first();
                     <p class="text-center">
                         <button class="btn btn-primary" type="submit">Change plan</button>
                     </p>
+                    @endif
+                    
                 </form>
             </div>
 

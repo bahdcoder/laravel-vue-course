@@ -7,7 +7,7 @@ $factory->define(Bahdcasts\Series::class, function (Faker $faker) {
     return [
         'title' => $title,
         'slug' => str_slug($title),
-        'image_url' => $faker->imageUrl(),
+        'image_url' => asset('assets/img/series.jpg'),
         'description' => $faker->paragraph()
     ];
 });

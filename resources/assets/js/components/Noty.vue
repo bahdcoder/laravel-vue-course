@@ -1,3 +1,7 @@
+<template>
+	
+</template>
+
 <script>
 	import Swal from 'sweetalert';
 	export default {
