@@ -71,7 +71,7 @@
 						 .then(resp => {
 						 	this.lessons.splice(key, 1)
 						 	window.noty({
-								message: 'Lesson updated successfully',
+								message: 'Lesson deleted successfully',
 								type: 'success'
 							})
 						 }).catch(error => {

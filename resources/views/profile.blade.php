@@ -54,6 +54,11 @@
 
     </div>
 </section>    
+
+@if(auth()->user->id === $user->id)
+@php 
+$subscription = auth()->user()->subscriptions->first();
+@endphp 
 <section class="section bg-gray" id="section-vtab">
     <div class="container">
         <header class="section-header">
@@ -77,11 +82,13 @@
                 <h6>Payments & Subscriptions</h6>
                 </a>
             </li>
+            @if(auth()->user()->card_brand)
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#settings-2">
                 <h6>Card details</h6>
                 </a>
             </li>
+            @endif 
             </ul>
         </div>
 
@@ -110,7 +117,12 @@
                 <form action="{{ route('subscriptions.change') }}" method="post">
                     {{ csrf_field() }}
                     <h5 class="text-center">
-                        Your current plan: <span class="badge badge-success">{{ auth()->user()->subscriptions->first()->stripe_plan }}</span>
+                        Your current plan: 
+                        @if($subscription)
+                        <span class="badge badge-success">{{ $subscription->stripe_plan }}</span>
+                        @else 
+                        <span class="badge badge-danger">NO PLAN</span>
+                        @endif 
                     </h5>
                     <br>
                     <select name="plan" class="form-control">
@@ -124,6 +136,7 @@
                 </form>
             </div>
 
+            @if(auth()->user()->card_brand)
             <div class="tab-pane fade" id="settings-2">
                 <div class="row">
                     <h2 class="text-center">
@@ -134,6 +147,7 @@
                     </p>
                 </div>
             </div>
+            @endif 
 
             </div>
         </div>
@@ -143,7 +157,8 @@
 
 
     </div>
-</section>    
+</section>
+@endif
 
 @endsection
 
