@@ -102,12 +102,26 @@
                     </form>
             </div>
 
-            <div class="tab-pane fade" id="profile-2">
-                <p class="text-center"><img src="assets/img/blog-2.jpg" alt="..."></p>
+            <div class="tab-pane fade text-center" id="profile-2">
+                
             </div>
 
             <div class="tab-pane fade" id="messages-2">
-                <p class="text-center"><img src="assets/img/blog-3.jpg" alt="..."></p>
+                <form action="{{ route('subscriptions.change') }}" method="post">
+                    {{ csrf_field() }}
+                    <h5 class="text-center">
+                        Your current plan: <span class="badge badge-success">{{ auth()->user()->subscriptions->first()->stripe_plan }}</span>
+                    </h5>
+                    <br>
+                    <select name="plan" class="form-control">
+                        <option value="monthly">Monthly</option>
+                        <option value="yearly">Yearly</option>
+                    </select>
+                    <br>
+                    <p class="text-center">
+                        <button class="btn btn-primary" type="submit">Change plan</button>
+                    </p>
+                </form>
             </div>
 
             <div class="tab-pane fade" id="settings-2">

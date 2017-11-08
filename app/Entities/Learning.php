@@ -67,11 +67,10 @@ trait Learning {
      * @return \Illuminate\Support\Collection(Bahdcasts\Lesson)
      */
     public function getCompletedLessons($series) {
-        $completedLessons = $this->getCompletedLessonsForASeries($series);
         // 1, 2, 4
-        return collect($completedLessons)->map(function($lessonId) {
-            return Lesson::find($lessonId);
-        });
+        return Lesson::whereIn('id', 
+            $this->getCompletedLessonsForASeries($series)
+        )->get();
     }
 
     /**

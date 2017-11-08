@@ -13,6 +13,8 @@ class Lesson extends Model
      */
     protected $guarded = [];
 
+    protected $with = [];
+
     /**
      * A lesson belongs to a series
      *

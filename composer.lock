@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bff92f10ca434e2a2f724d3dbaf15c76",
+    "content-hash": "dba8ae062af39736d6b38d9546337a03",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1779,16 +1779,16 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v3.3.8",
+            "version": "v3.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "084d804fe35808eb2ef596ec83d85d9768aa6c9d"
+                "reference": "eb95d9ce8f18dcc1b3dfff00cb624c402be78ffd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/084d804fe35808eb2ef596ec83d85d9768aa6c9d",
-                "reference": "084d804fe35808eb2ef596ec83d85d9768aa6c9d",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/eb95d9ce8f18dcc1b3dfff00cb624c402be78ffd",
+                "reference": "eb95d9ce8f18dcc1b3dfff00cb624c402be78ffd",
                 "shasum": ""
             },
             "require": {
@@ -1831,7 +1831,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-08-27T14:52:21+00:00"
+            "time": "2017-10-02T06:42:24+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -1898,16 +1898,16 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v3.3.8",
+            "version": "v3.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "b2260dbc80f3c4198f903215f91a1ac7fe9fe09e"
+                "reference": "773e19a491d97926f236942484cb541560ce862d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/b2260dbc80f3c4198f903215f91a1ac7fe9fe09e",
-                "reference": "b2260dbc80f3c4198f903215f91a1ac7fe9fe09e",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/773e19a491d97926f236942484cb541560ce862d",
+                "reference": "773e19a491d97926f236942484cb541560ce862d",
                 "shasum": ""
             },
             "require": {
@@ -1943,7 +1943,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-29T21:54:42+00:00"
+            "time": "2017-10-02T06:42:24+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -2086,16 +2086,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
                 "shasum": ""
             },
             "require": {
@@ -2107,7 +2107,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
@@ -2141,7 +2141,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/process",
@@ -2337,16 +2337,16 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.3.8",
+            "version": "v3.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "89fcb5a73e0ede2be2512234c4e40457bb22b35f"
+                "reference": "03e3693a36701f1c581dd24a6d6eea2eba2113f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/89fcb5a73e0ede2be2512234c4e40457bb22b35f",
-                "reference": "89fcb5a73e0ede2be2512234c4e40457bb22b35f",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/03e3693a36701f1c581dd24a6d6eea2eba2113f6",
+                "reference": "03e3693a36701f1c581dd24a6d6eea2eba2113f6",
                 "shasum": ""
             },
             "require": {
@@ -2401,7 +2401,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2017-08-27T14:52:21+00:00"
+            "time": "2017-10-02T06:42:24+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
@@ -2502,74 +2502,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "barryvdh/laravel-debugbar",
-            "version": "v3.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "01a859752094e00aa8548832312366753272f8af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/01a859752094e00aa8548832312366753272f8af",
-                "reference": "01a859752094e00aa8548832312366753272f8af",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/routing": "5.5.x",
-                "illuminate/session": "5.5.x",
-                "illuminate/support": "5.5.x",
-                "maximebf/debugbar": "~1.14.0",
-                "php": ">=7.0",
-                "symfony/debug": "^3",
-                "symfony/finder": "^3"
-            },
-            "require-dev": {
-                "illuminate/framework": "5.5.x"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Barryvdh\\Debugbar\\ServiceProvider"
-                    ],
-                    "aliases": {
-                        "Debugbar": "Barryvdh\\Debugbar\\Facade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Barryvdh\\Debugbar\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Barry vd. Heuvel",
-                    "email": "barryvdh@gmail.com"
-                }
-            ],
-            "description": "PHP Debugbar integration for Laravel",
-            "keywords": [
-                "debug",
-                "debugbar",
-                "laravel",
-                "profiler",
-                "webprofiler"
-            ],
-            "time": "2017-09-18T13:32:46+00:00"
-        },
         {
             "name": "doctrine/instantiator",
             "version": "1.1.0",
@@ -2779,67 +2711,6 @@
                 "test"
             ],
             "time": "2015-05-11T14:41:42+00:00"
-        },
-        {
-            "name": "maximebf/debugbar",
-            "version": "v1.14.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/maximebf/php-debugbar.git",
-                "reference": "e23a98f2d65607d8aa6c7b409a513f8fdf4acdde"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/maximebf/php-debugbar/zipball/e23a98f2d65607d8aa6c7b409a513f8fdf4acdde",
-                "reference": "e23a98f2d65607d8aa6c7b409a513f8fdf4acdde",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "psr/log": "^1.0",
-                "symfony/var-dumper": "^2.6|^3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.0|^5.0"
-            },
-            "suggest": {
-                "kriswallsmith/assetic": "The best way to manage assets",
-                "monolog/monolog": "Log using Monolog",
-                "predis/predis": "Redis storage"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.14-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "DebugBar\\": "src/DebugBar/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Maxime Bouroumeau-Fuseau",
-                    "email": "maxime.bouroumeau@gmail.com",
-                    "homepage": "http://maximebf.com"
-                },
-                {
-                    "name": "Barry vd. Heuvel",
-                    "email": "barryvdh@gmail.com"
-                }
-            ],
-            "description": "Debug bar in the browser for php application",
-            "homepage": "https://github.com/maximebf/php-debugbar",
-            "keywords": [
-                "debug",
-                "debugbar"
-            ],
-            "time": "2017-08-17T07:17:00+00:00"
         },
         {
             "name": "mockery/mockery",

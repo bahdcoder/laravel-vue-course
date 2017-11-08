@@ -12,6 +12,7 @@ Route::get('register/confirm', 'ConfirmEmailController@index')->name('confirm-em
 
 Route::middleware('auth')->group(function() {
     Route::post('/subscribe', 'SubscriptionsController@subscribe');    
+    Route::post('/subscription/change', 'SubscriptionsController@change')->name('subscriptions.change');        
     Route::get('/subscribe', 'SubscriptionsController@showSubscriptionForm');
     Route::post('/series/complete-lesson/{lesson}', 'WatchSeriesController@completeLesson');
     Route::get('/watch-series/{series}', 'WatchSeriesController@index')->name('series.learning');

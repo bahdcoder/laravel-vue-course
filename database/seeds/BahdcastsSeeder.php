@@ -21,8 +21,10 @@ class BahdcastsSeeder extends Seeder
         factory(Series::class, 5)
                 ->create()
                 ->each(function($series) {
+                    $x = 0;
                     factory(Lesson::class, 10)->create([
-                        'series_id' => $series->id
+                        'series_id' => $series->id,
+                        'episode_number' => $x++
                     ]);
                 });
     }

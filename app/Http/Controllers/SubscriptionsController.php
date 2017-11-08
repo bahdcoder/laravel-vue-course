@@ -18,4 +18,20 @@ class SubscriptionsController extends Controller
                     request('stripeToken')
                 );
     }
+
+    public function change() {
+        $this->validate(request(), [
+            'plan' => 'required'
+        ]);
+        $user = auth()->user();
+        $userPlan = $user->subscriptions->first()->stripe_plan;
+
+        if (request('plan') === $userPlan) {
+            return redirect()->back();
+        }
+
+        $user->subscription($userPlan)->swap(request('plan'));
+
+        return redirect()->back();
+    }
 }
