@@ -57,6 +57,6 @@ class RegistrationTest extends TestCase
             'password' => 'secret'
         ])->assertRedirect();
         //assert that a particular email was sent 
-        Mail::assertSent(ConfirmYourEmail::class);
+        Mail::assertQueued(ConfirmYourEmail::class);
     }
 }

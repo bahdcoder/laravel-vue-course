@@ -17,7 +17,7 @@ class LoginTest extends TestCase
         $this->postJson('/login', [
             'email' => $user->email,
             'password' => 'secret'
-        ])->assertStatus(200)
+        ], ['X-Requested-With' => 'XMLHttpRequest'])->assertStatus(200)
         ->assertJson([
             'status' => 'ok'
         ])->assertSessionHas('success', 'Successfully logged in.');
