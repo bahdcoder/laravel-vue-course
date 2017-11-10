@@ -2,6 +2,7 @@
 
 namespace Bahdcasts\Http\Controllers;
 
+use SEO;
 use Bahdcasts\Series;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,8 @@ class FrontendController extends Controller
      * @return view 
      */
     public function welcome() {
+        $this->setSeo('Bahdcasts', 'THe best web development training');
+
         return view('welcome')->withSeries(Series::all());
     }
 
@@ -23,6 +26,8 @@ class FrontendController extends Controller
      * @return view
      */
     public function series(Series $series) {
+        $this->setSeo($series->title, $series->description);
+
         return view('series')->withSeries($series);
     }
 
